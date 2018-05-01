@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/main_layout">
+
+    <TextView
+        android:id="@+id/category"
+        style="@style/category_author_fields"
+        android:layout_marginStart="@dimen/half"
+        android:layout_marginTop="@dimen/quarter" />
+
+    <LinearLayout style="@style/author_date_layout">
+
+        <TextView
+            android:id="@+id/author"
+            style="@style/category_author_fields" />
+
+        <TextView
+            android:id="@+id/date"
+            style="@style/date_field"
+            android:gravity="end" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/title_field_landscape" />
+
+    <LinearLayout style="@style/thumbnail_layout">
+
+        <ImageView
+            android:id="@+id/thumbnail"
+            style="@style/thumnail"
+            android:layout_weight="1"
+            android:contentDescription="@string/article_thumbnail" />
+
+        <TextView
+            android:id="@+id/trailText"
+            style="@style/trail_text_field_landscape"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/readMore"
+        style="@style/readmore_text_field"
+        android:layout_marginTop="@dimen/half"
+        android:drawableEnd="@drawable/play_icon" />
+
+</LinearLayout>

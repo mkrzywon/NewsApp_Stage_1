@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">NewsApp</string>
+    <string name="no_connection">No network connection. Check your network settings and try again.</string>
+    <string name="no_articles">No articles found.</string>
+    <string name="article_thumbnail">Article\'s thumbnail</string>
+    <string name="news">newsapp</string>
+    <string name="newsapp">/newsapp</string>
+    <string name="writtenBy">Written by:\n</string>
+    <string name="publishedOn">Published on:\n</string>
+    <string name="dots">&#8230;</string>
+    <string name="readMore">Read more</string>
+    <string name="input_format">yyyy-MM-dd\'T\'hh:mm:ss\'Z\'</string>
+    <string name="output_format">yyyy-MM-dd</string>
+    <string name="adapter_date_log_tag">formattedDateFromString</string>
+    <string name="adapter_date_log_msg">Exception in formattedDate():\u0020</string>
+</resources>

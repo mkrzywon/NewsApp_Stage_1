@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="double_standard">32dp</dimen>
+    <dimen name="standard">16dp</dimen>
+    <dimen name="half">8dp</dimen>
+    <dimen name="quarter">4dp</dimen>
+    <dimen name="zero">0dp</dimen>
+
+    <dimen name="article_background_radius">5dp</dimen>
+    <dimen name="article_background_left">1dp</dimen>
+    <dimen name="article_background_right">1dp</dimen>
+    <dimen name="article_background_bottom">3dp</dimen>
+
+    <dimen name="standrad_text_size">16sp</dimen>
+    <dimen name="main_text_size">18sp</dimen>
+</resources>
