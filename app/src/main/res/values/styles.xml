@@ -12,14 +12,11 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/komika</item>
-        <item name="android:textSize">@dimen/standrad_text_size</item>
+        <item name="android:textSize">@dimen/standard_text_size</item>
     </style>
 
-    <style name="date_field">
+    <style name="category_author_fields.date_field">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:fontFamily">@font/komika</item>
-        <item name="android:textSize">@dimen/standrad_text_size</item>
     </style>
 
     <style name="title_field_portrait">
@@ -33,18 +30,11 @@
         <item name="android:textSize">@dimen/main_text_size</item>
     </style>
 
-    <style name="title_field_landscape">
+    <style name="title_field_portrait.title_field_landscape">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">@dimen/quarter</item>
-        <item name="android:layout_marginEnd">@dimen/half</item>
-        <item name="android:layout_marginStart">@dimen/half</item>
-        <item name="android:fontFamily">@font/komika</item>
-        <item name="android:gravity">center_horizontal</item>
-        <item name="android:textSize">@dimen/main_text_size</item>
     </style>
 
-    <style name="thumnail">
+    <style name="thumbnail">
         <item name="android:layout_width">@dimen/zero</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginEnd">@dimen/zero</item>
@@ -61,12 +51,9 @@
         <item name="android:textSize">@dimen/main_text_size</item>
     </style>
 
-    <style name="trail_text_field_landscape">
+    <style name="trail_text_field_portrait.trail_text_field_landscape">
         <item name="android:layout_width">@dimen/zero</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">@dimen/half</item>
-        <item name="android:fontFamily">@font/kreon_regular</item>
-        <item name="android:textSize">@dimen/main_text_size</item>
+        <item name="android:layout_marginTop">@dimen/half</item>
     </style>
 
     <style name="readmore_text_field">
@@ -76,7 +63,7 @@
         <item name="android:layout_marginBottom">@dimen/half</item>
         <item name="android:drawablePadding">@dimen/quarter</item>
         <item name="android:fontFamily">@font/komika</item>
-        <item name="android:textSize">@dimen/standrad_text_size</item>
+        <item name="android:textSize">@dimen/standard_text_size</item>
     </style>
 
     <style name="main_layout">
@@ -87,20 +74,16 @@
         <item name="android:orientation">vertical</item>
     </style>
 
-    <style name="author_date_layout">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+    <style name="thumbnail_layout.author_date_layout">
         <item name="android:layout_marginBottom">@dimen/quarter</item>
         <item name="android:layout_marginEnd">@dimen/half</item>
         <item name="android:layout_marginStart">@dimen/half</item>
         <item name="android:layout_marginTop">@dimen/quarter</item>
-        <item name="android:orientation">horizontal</item>
     </style>
 
     <style name="thumbnail_layout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">center_vertical</item>
         <item name="android:orientation">horizontal</item>
     </style>
 </resources>

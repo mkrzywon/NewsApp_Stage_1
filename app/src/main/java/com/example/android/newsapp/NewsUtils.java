@@ -195,6 +195,10 @@ class NewsUtils {
             // Extract the JSONArray associated with the key called "results"
             JSONArray resultsArray = responseJsonObject.getJSONArray(KEY_RESULTS);
 
+            String author = null;
+            String trailText = null;
+            String thumbnailUrl = null;
+
             // Iterating through resultsArray, creating an (@link News) object
             for (int i = 0; i < resultsArray.length(); i++) {
 
@@ -202,34 +206,48 @@ class NewsUtils {
                 JSONObject currentArticle = resultsArray.getJSONObject(i);
 
                 // Extract the value for the key called "sectionName"
-                String category = currentArticle.getString(KEY_SECTION);
+                String category = currentArticle.optString(KEY_SECTION);
 
                 // Extract the value for the key called "webPublicationDate"
-                String date = currentArticle.getString(KEY_DATE);
+                String date = currentArticle.optString(KEY_DATE);
 
                 // Extract the value for the key called "webTitle"
-                String title = currentArticle.getString(KEY_TITLE);
+                String title = currentArticle.optString(KEY_TITLE);
 
                 // Extract the value for the key called "webUrl"
-                String url = currentArticle.getString(KEY_URL);
+                String url = currentArticle.optString(KEY_URL);
 
-                // Extract the next JSONArray associated with the key called "tags"
-                JSONArray tagsArray = currentArticle.getJSONArray(KEY_TAGS);
+                if (currentArticle.has(KEY_TAGS)) {
 
-                // Extract the JSONObject associated with first position of the tagsArray
-                JSONObject tagsObject = tagsArray.getJSONObject(0);
+                    // Extract the next JSONArray associated with the key called "tags"
+                    JSONArray tagsArray = currentArticle.getJSONArray(KEY_TAGS);
 
-                // Extract the value for the key called "webTitle"
-                String author = tagsObject.getString(KEY_TITLE);
+                    // Extract the JSONObject associated with first position of the tagsArray
+                    JSONObject tagsObject = tagsArray.getJSONObject(0);
 
-                // Extract the JSONObject associated with the key called "fields"
-                JSONObject fieldsObject = currentArticle.getJSONObject(KEY_FIELDS);
+                    if (tagsObject.has(KEY_TITLE)) {
 
-                // Extract the value for the key called "trailText"
-                String trailText = fieldsObject.getString(KEY_TRAIL_TEXT);
+                        // Extract the value for the key called "webTitle"
+                        author = tagsObject.getString(KEY_TITLE);
 
-                // Extract the value for the key called "thumbnail"
-                String thumbnailUrl = fieldsObject.getString(KEY_THUMBNAIL);
+                    }
+                }
+
+                if (currentArticle.has(KEY_FIELDS)) {
+
+                    // Extract the JSONObject associated with the key called "fields"
+                    JSONObject fieldsObject = currentArticle.getJSONObject(KEY_FIELDS);
+
+                    if (fieldsObject.has(KEY_TRAIL_TEXT)) {
+
+                        // Extract the value for the key called "trailText"
+                        trailText = fieldsObject.getString(KEY_TRAIL_TEXT);
+
+                        // Extract the value for the key called "thumbnail"
+                        thumbnailUrl = fieldsObject.getString(KEY_THUMBNAIL);
+
+                    }
+                }
 
                 // Create a new {@link News} object with the category, date, title,
                 // url, author, trail text and thumbnail url from the JSON response.

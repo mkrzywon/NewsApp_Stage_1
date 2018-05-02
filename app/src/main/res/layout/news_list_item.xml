@@ -8,7 +8,7 @@
         android:layout_marginStart="@dimen/half"
         android:layout_marginTop="@dimen/quarter" />
 
-    <LinearLayout style="@style/author_date_layout">
+    <LinearLayout style="@style/thumbnail_layout.author_date_layout">
 
         <TextView
             android:id="@+id/author"
@@ -16,16 +16,18 @@
 
         <TextView
             android:id="@+id/date"
-            style="@style/date_field"
+            style="@style/category_author_fields.date_field"
             android:gravity="end" />
 
     </LinearLayout>
 
-    <LinearLayout style="@style/thumbnail_layout">
+    <LinearLayout
+        style="@style/thumbnail_layout"
+        android:gravity="center_vertical">
 
         <ImageView
             android:id="@+id/thumbnail"
-            style="@style/thumnail"
+            style="@style/thumbnail"
             android:layout_weight="1"
             android:contentDescription="@string/article_thumbnail" />
 

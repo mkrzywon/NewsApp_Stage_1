@@ -18,7 +18,6 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
 import java.util.List;
 
@@ -50,13 +49,33 @@ class NewsAdapter extends ArrayAdapter<News> {
     @NonNull
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+
+        ViewHolder holder;
+
+        if (convertView == null) {
+
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.news_list_item, null);
+            holder = new ViewHolder();
+
+            holder.articleTitle = convertView.findViewById(R.id.title);
+            holder.articleCategory = convertView.findViewById(R.id.category);
+            holder.articleAuthor = convertView.findViewById(R.id.author);
+            holder.articleDate = convertView.findViewById(R.id.date);
+            holder.trailText = convertView.findViewById(R.id.trailText);
+            holder.readMore = convertView.findViewById(R.id.readMore);
+            holder.thumbnail = convertView.findViewById(R.id.thumbnail);
+
+            convertView.setTag(holder);
+
+        } else {
+
+            holder = (ViewHolder) convertView.getTag();
+
+        }
+
         // Check if there is an existing list item view (called convertView) that we can reuse,
         // otherwise, if convertView is null, then inflate a new list item layout.
-        View listItemView = convertView;
-        if (listItemView == null) {
-            listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.news_list_item, parent, false);
-        }
+
 
         // Find the article at the given position in the list of articles
         News article = getItem(position);
@@ -80,44 +99,37 @@ class NewsAdapter extends ArrayAdapter<News> {
             }
 
             // Setting the title field
-            TextView articleTitle = listItemView.findViewById(R.id.title);
-            articleTitle.setTypeface(null, Typeface.BOLD);
-            articleTitle.setText(slimTitle);
+            holder.articleTitle.setTypeface(null, Typeface.BOLD);
+            holder.articleTitle.setText(slimTitle);
 
             // Setting the category field
-            TextView articleCategory = listItemView.findViewById(R.id.category);
-            articleCategory.setTypeface(null, Typeface.BOLD + Typeface.ITALIC);
-            articleCategory.setText(article.getSectionName());
+            holder.articleCategory.setTypeface(null, Typeface.BOLD + Typeface.ITALIC);
+            holder.articleCategory.setText(article.getSectionName());
 
             // Setting the author name field
-            TextView articleAuthor = listItemView.findViewById(R.id.author);
-            String formattedAuthor = (listItemView.getResources().getString(R.string.writtenBy) + article.getArticleAuthor());
-            articleAuthor.setText(formattedAuthor);
+            String formattedAuthor = (convertView.getResources().getString(R.string.writtenBy) + article.getArticleAuthor());
+            holder.articleAuthor.setText(formattedAuthor);
 
             // Setting the date field
             String date = article.getDatePublished();
-            String dateFormatted = (listItemView.getResources().getString(R.string.publishedOn) + formattedDate(date));
-            TextView articleDate = listItemView.findViewById(R.id.date);
-            articleDate.setText(dateFormatted);
+            String dateFormatted = (convertView.getResources().getString(R.string.publishedOn) + formattedDate(date));
+            holder.articleDate.setText(dateFormatted);
 
             // Setting the trail text field
-            TextView trailText = listItemView.findViewById(R.id.trailText);
-            String formattedTrailText = (article.getTraiText()) + listItemView.getResources().getString(R.string.dots);
-            trailText.setText(formattedTrailText);
+            String formattedTrailText = (article.getTrailText()) + convertView.getResources().getString(R.string.dots);
+            holder.trailText.setText(formattedTrailText);
 
             // Setting read more TextView with slight animation
-            TextView readMore = listItemView.findViewById(R.id.readMore);
-            readMore.setText(R.string.readMore);
-            setReadMoreAnimation(readMore);
+            holder.readMore.setText(R.string.readMore);
+            setReadMoreAnimation(holder.readMore);
 
             // Using the Picasso plugin to set the proper thumbnail with given url
-            ImageView thumbnail = listItemView.findViewById(R.id.thumbnail);
-            Picasso.get().load(article.getThumbnailUrl()).into(thumbnail);
+            Picasso.get().load(article.getThumbnailUrl()).into(holder.thumbnail);
 
         }
 
-        // Return the list item view that is now showing the appropriate data
-        return listItemView;
+        // Return the convertView that is now showing the appropriate data
+        return convertView;
 
     }
 
@@ -137,9 +149,9 @@ class NewsAdapter extends ArrayAdapter<News> {
     // Returns the formatted date String
     private String formattedDate(String inputDate) {
 
-           String inputFormat = getContext().getResources().getString(R.string.input_format);
+        String inputFormat = getContext().getResources().getString(R.string.input_format);
 
-           String outputFormat = getContext().getResources().getString(R.string.output_format);
+        String outputFormat = getContext().getResources().getString(R.string.output_format);
 
         Date parsed;
         String outputDate = "";
@@ -159,5 +171,17 @@ class NewsAdapter extends ArrayAdapter<News> {
         }
 
         return outputDate;
+    }
+
+    private static class ViewHolder {
+
+        private TextView articleTitle;
+        private TextView articleCategory;
+        private TextView articleAuthor;
+        private TextView articleDate;
+        private TextView trailText;
+        private TextView readMore;
+        private ImageView thumbnail;
+
     }
 }

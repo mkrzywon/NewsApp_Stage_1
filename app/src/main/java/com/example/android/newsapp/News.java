@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 public class News implements Parcelable {
 
-    //creator - used when un-parceling our parcle (creating the object)
+    //creator - used when un-parceling our parcel (creating the object)
     public static final Creator<News> CREATOR = new Creator<News>() {
 
         @Override
@@ -19,19 +19,19 @@ public class News implements Parcelable {
         }
     };
 
-    private final String mSectionName;
+    private final String sectionName;
 
-    private final String mDatePublished;
+    private final String datePublished;
 
-    private final String mArticleTitle;
+    private final String articleTitle;
 
-    private final String mArticleUrl;
+    private final String articleUrl;
 
-    private final String mArticleAuthor;
+    private final String articleAuthor;
 
-    private final String mTrailText;
+    private final String trailText;
 
-    private final String mThumbnailUrl;
+    private final String thumbnailUrl;
 
     /**
      * Constructs a new {@link News} object.
@@ -46,26 +46,26 @@ public class News implements Parcelable {
      */
     News(String sectionName, String datePublished, String articleTitle, String articleUrl, String articleAuthor, String trailText, String thumbnailUrl) {
 
-        mSectionName = sectionName;
-        mDatePublished = datePublished;
-        mArticleTitle = articleTitle;
-        mArticleUrl = articleUrl;
-        mArticleAuthor = articleAuthor;
-        mTrailText = trailText;
-        mThumbnailUrl = thumbnailUrl;
+        this.sectionName = sectionName;
+        this.datePublished = datePublished;
+        this.articleTitle = articleTitle;
+        this.articleUrl = articleUrl;
+        this.articleAuthor = articleAuthor;
+        this.trailText = trailText;
+        this.thumbnailUrl = thumbnailUrl;
 
     }
 
     //read and set saved values from parcel
     private News(Parcel parcel) {
 
-        mSectionName = parcel.readString();
-        mDatePublished = parcel.readString();
-        mArticleTitle = parcel.readString();
-        mArticleUrl = parcel.readString();
-        mArticleAuthor = parcel.readString();
-        mTrailText = parcel.readString();
-        mThumbnailUrl = parcel.readString();
+        sectionName = parcel.readString();
+        datePublished = parcel.readString();
+        articleTitle = parcel.readString();
+        articleUrl = parcel.readString();
+        articleAuthor = parcel.readString();
+        trailText = parcel.readString();
+        thumbnailUrl = parcel.readString();
 
     }
 
@@ -73,61 +73,61 @@ public class News implements Parcelable {
      * Get the string resource ID for article's section name
      */
     public String getSectionName() {
-        return mSectionName;
+        return sectionName;
     }
 
     /**
      * Get the string resource ID for the article's date od publication
      */
     public String getDatePublished() {
-        return mDatePublished;
+        return datePublished;
     }
 
     /**
      * Get the string resource ID for the article's title
      */
     public String getArticleTitle() {
-        return mArticleTitle;
+        return articleTitle;
     }
 
     /**
      * Get the string resource ID for the article's url
      */
     public String getArticleUrl() {
-        return mArticleUrl;
+        return articleUrl;
     }
 
     /**
      * Get the string resource ID for the article's author
      */
     public String getArticleAuthor() {
-        return mArticleAuthor;
+        return articleAuthor;
     }
 
     /**
      * Get the string resource ID for the article's author
      */
-    public String getTraiText() {
-        return mTrailText;
+    public String getTrailText() {
+        return trailText;
     }
 
     /**
      * Get the string resource ID for the article's author
      */
     public String getThumbnailUrl() {
-        return mThumbnailUrl;
+        return thumbnailUrl;
     }
 
     //write the values to parcel for storage
     public void writeToParcel(Parcel dest, int flags) {
 
-        dest.writeString(mSectionName);
-        dest.writeString(mDatePublished);
-        dest.writeString(mArticleTitle);
-        dest.writeString(mArticleUrl);
-        dest.writeString(mArticleAuthor);
-        dest.writeString(mTrailText);
-        dest.writeString(mThumbnailUrl);
+        dest.writeString(sectionName);
+        dest.writeString(datePublished);
+        dest.writeString(articleTitle);
+        dest.writeString(articleUrl);
+        dest.writeString(articleAuthor);
+        dest.writeString(trailText);
+        dest.writeString(thumbnailUrl);
 
     }
 
