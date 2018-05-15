@@ -31,7 +31,6 @@ class NewsUtils {
      */
     private static final String KEY_RESPONSE = "response";
     private static final String KEY_RESULTS = "results";
-    private static final String KEY_TAGS = "tags";
     private static final String KEY_FIELDS = "fields";
 
     /**
@@ -40,9 +39,17 @@ class NewsUtils {
     private static final String KEY_SECTION = "sectionName";
     private static final String KEY_DATE = "webPublicationDate";
     private static final String KEY_TITLE = "webTitle";
+    private static final String KEY_AUTHOR = "byline";
     private static final String KEY_URL = "webUrl";
     private static final String KEY_TRAIL_TEXT = "trailText";
     private static final String KEY_THUMBNAIL = "thumbnail";
+
+    /**
+     * empty string in case of situation there's no json data
+     */
+    private static final String KEY_NO_AUTHOR = "No author";
+    private static final String KEY_NO_THUMBNAIL = "No thumbnail";
+    private static final String KEY_NO_TRAIL_TEXT = "No trail text";
 
     private NewsUtils() {
     }
@@ -217,22 +224,6 @@ class NewsUtils {
                 // Extract the value for the key called "webUrl"
                 String url = currentArticle.optString(KEY_URL);
 
-                if (currentArticle.has(KEY_TAGS)) {
-
-                    // Extract the next JSONArray associated with the key called "tags"
-                    JSONArray tagsArray = currentArticle.getJSONArray(KEY_TAGS);
-
-                    // Extract the JSONObject associated with first position of the tagsArray
-                    JSONObject tagsObject = tagsArray.getJSONObject(0);
-
-                    if (tagsObject.has(KEY_TITLE)) {
-
-                        // Extract the value for the key called "webTitle"
-                        author = tagsObject.getString(KEY_TITLE);
-
-                    }
-                }
-
                 if (currentArticle.has(KEY_FIELDS)) {
 
                     // Extract the JSONObject associated with the key called "fields"
@@ -243,8 +234,30 @@ class NewsUtils {
                         // Extract the value for the key called "trailText"
                         trailText = fieldsObject.getString(KEY_TRAIL_TEXT);
 
+                    } else {
+
+                        trailText = KEY_NO_TRAIL_TEXT;
+                    }
+
+                    if (fieldsObject.has(KEY_THUMBNAIL)) {
+
                         // Extract the value for the key called "thumbnail"
                         thumbnailUrl = fieldsObject.getString(KEY_THUMBNAIL);
+
+                    } else {
+
+                        thumbnailUrl = KEY_NO_THUMBNAIL;
+
+                    }
+
+                    if (fieldsObject.has(KEY_AUTHOR)) {
+
+                        // Extract the value for the key called "webTitle"
+                        author = fieldsObject.getString(KEY_AUTHOR);
+
+                    } else {
+
+                        author = KEY_NO_AUTHOR;
 
                     }
                 }
